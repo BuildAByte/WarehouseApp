@@ -1,0 +1,35 @@
+.navbarParent {
+  display: flex;
+
+  margin: 0;
+  height: 95px;
+
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+.navbarItem {
+  display: flex;
+  flex: 1;
+  margin-left: 50px;
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.navbarItem img {
+  size: 20px;
+}
+
+a {
+  color: beige;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(216, 24, 53);
+}

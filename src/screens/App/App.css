@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+  flex: 1;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+}

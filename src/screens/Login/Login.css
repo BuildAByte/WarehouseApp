@@ -1,0 +1,21 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+
+  /* Direction of the items, can be row or column */
+  flex-direction: column;
+}
+
+.header,
+.footer {
+  height: 30px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  flex-direction: column;
+  justify-content: center;
+}
