@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { getWorkers, user } from "../../api/api";
 import "./ShowWorkers.css";
 import { useNavigate } from "react-router-dom";
+import Card from "../../components/Card/Cards";
 
 export default function ShowWorkers() {
   const [workers, setWorkers] = useState<user[]>([]);
@@ -21,10 +22,8 @@ export default function ShowWorkers() {
     setIsAdmin(parse.admin);
   });
   function mapUsers() {
-    return workers.map((user) => (
-      <div key={user.id}>
-        <p>{user.name}</p>
-      </div>
+    return workers.map(({ id, name, admin }) => (
+      <Card data={[id, name, admin]} />
     ));
   }
   return (

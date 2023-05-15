@@ -8,11 +8,17 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  padding: 10px 120px;
+
   background-color: aqua;
 }
 
 .activeWork {
   background-color: red;
+}
+
+.table-container {
+  border-radius: 5px;
+
+  padding: 2px;
 }

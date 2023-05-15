@@ -10,6 +10,7 @@ import {
 } from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
+import Card from "../../components/Card/Cards";
 
 export default function Works() {
   const [works, setWorks] = useState<work[]>([]);
@@ -41,16 +42,14 @@ export default function Works() {
   }
 
   function mapWorks() {
-    return works.map((work) => (
-      <div key={work.id}>
-        <p>{JSON.stringify(work)}</p>
-      </div>
+    return works.map(({ id, work_type, start_timestamp, end_timestamp }) => (
+      <Card data={[id, work_type, start_timestamp, end_timestamp]} />
     ));
   }
   return (
     <div className="container">
       {mapLatestWork()}
-      {mapWorks()}
+      <div className="table-container">{mapWorks()}</div>
       {workDisplayed.length ? undefined : (
         <button
           className="addWorkBtn"

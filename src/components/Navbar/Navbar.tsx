@@ -6,16 +6,16 @@ export default function Navbar() {
   return (
     <div className="navbarParent">
       <div className="navbarItem">
-        <Link to="/app">Workers</Link>
+        <Link to="/app/workers">Workers</Link>
       </div>
       <div className="navbarItem">
         <Link to="/app/works">Works</Link>
       </div>
       <div className="navbarItem">
-        <Link to="/history">History</Link>
+        <Link to="/app/history">History</Link>
       </div>
       <div className="navbarItem">
-        <Link to="/currentMatch">Current Match</Link>
+        <Link to="/app/currentMatch">Current Match</Link>
       </div>
     </div>
   );

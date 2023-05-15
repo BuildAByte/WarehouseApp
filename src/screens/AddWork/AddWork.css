@@ -3,3 +3,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.item-container {
+  bottom: 50px;
+  right: 50px;
+}
