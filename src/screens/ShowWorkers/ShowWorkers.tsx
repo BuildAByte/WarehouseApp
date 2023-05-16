@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
 import { getWorkers, user } from "../../api/api";
 import "./ShowWorkers.css";
 import { useNavigate } from "react-router-dom";

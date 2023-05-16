@@ -1,12 +1,10 @@
-import { addWorker, loginWorker } from "../../api/api";
+import { addWorker } from "../../api/api";
 import "./AddWorker.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function AddWorker() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   async function addWorkerCallback() {
     const add = await addWorker(name, password);
     console.log(add);

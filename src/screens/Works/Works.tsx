@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  getLatestWork,
-  getWorkTypes,
-  getWorkers,
-  getWorks,
-  user,
-  work,
-} from "../../api/api";
+import { getLatestWork, getWorks, work } from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Cards";

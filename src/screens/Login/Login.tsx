@@ -1,6 +1,6 @@
 import { loginWorker } from "../../api/api";
 import "./Login.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {

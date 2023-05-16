@@ -1,10 +1,4 @@
-import {
-  addWorker,
-  createWork,
-  getWorkTypes,
-  updateWork,
-  work,
-} from "../../api/api";
+import { createWork, getWorkTypes, updateWork, work } from "../../api/api";
 import "./AddWork.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -12,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function AddWork() {
   const activeWork = useLocation().state?.work ?? undefined;
-  const [work, setWork] = useState<work | undefined>(activeWork);
+  const [work] = useState<work | undefined>(activeWork);
   const [workTypes, setWorkTypes] = useState<string[]>([]);
   const [workType, setWorkType] = useState<string>("picking");
   const navigate = useNavigate();

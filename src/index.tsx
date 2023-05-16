@@ -5,7 +5,6 @@ import ReactDOM from "react-dom/client";
 import * as React from "react";
 import ShowWorkers from "./screens/ShowWorkers/ShowWorkers";
 import AddWorker from "./screens/AddWorker/AddWorker";
-import Navbar from "./components/Navbar/Navbar";
 import App from "./screens/App/App";
 import Works from "./screens/Works/Works";
 import AddWork from "./screens/AddWork/AddWork";
