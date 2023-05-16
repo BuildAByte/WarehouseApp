@@ -2,7 +2,7 @@ interface loginResponse {
   token: string;
   user: user;
 }
-
+const url = "45.76.36.206";
 export interface user {
   id: number;
   name: string;
@@ -28,10 +28,7 @@ export async function loginWorker(
     },
     body: JSON.stringify({ name, password }),
   };
-  const result = await fetch(
-    "http://165.227.132.185:8080/worker/login",
-    options
-  );
+  const result = await fetch(`http://${url}/worker/login`, options);
   return result.json();
 }
 
@@ -44,7 +41,7 @@ export async function getWorkers(): Promise<user[]> {
     method: "GET",
   };
 
-  const result = await fetch("http://165.227.132.185:8080/worker", options);
+  const result = await fetch(`http://${url}/worker`, options);
   return result.json();
 }
 
@@ -58,7 +55,7 @@ export async function addWorker(name: string, password: string) {
     },
     body: JSON.stringify({ name, password }),
   };
-  const result = await fetch("http://165.227.132.185:8080/worker", options);
+  const result = await fetch(`http://${url}/worker`, options);
   return result.json();
 }
 
@@ -71,10 +68,7 @@ export async function getWorks(): Promise<work[]> {
     },
     method: "GET",
   };
-  const result = await fetch(
-    `http://165.227.132.185:8080/picking/${user.id}`,
-    options
-  );
+  const result = await fetch(`http://${url}/picking/${user.id}`, options);
   return result.json();
 }
 
@@ -86,10 +80,7 @@ export async function getWorkTypes(): Promise<string[]> {
     },
     method: "GET",
   };
-  const result = await fetch(
-    "http://165.227.132.185:8080/picking/work",
-    options
-  );
+  const result = await fetch(`http://${url}/picking/work`, options);
   return result.json();
 }
 
@@ -106,7 +97,7 @@ export async function createWork(workType: string): Promise<work> {
     }),
   };
   console.log(options);
-  const result = await fetch("http://165.227.132.185:8080/picking", options);
+  const result = await fetch(`http://${url}/picking`, options);
   return result.json();
 }
 
@@ -118,10 +109,7 @@ export async function getLatestWork(): Promise<work[]> {
     },
     method: "GET",
   };
-  const result = await fetch(
-    "http://165.227.132.185:8080/picking/latest",
-    options
-  );
+  const result = await fetch(`http://${url}/picking/latest`, options);
   return result.json();
 }
 
@@ -135,9 +123,6 @@ export async function updateWork(work: work) {
     method: "PUT",
     body: JSON.stringify(work),
   };
-  const result = await fetch(
-    "http://165.227.132.185:8080/picking/" + work.id,
-    options
-  );
+  const result = await fetch(`http://${url}/picking/` + work.id, options);
   return result.json();
 }

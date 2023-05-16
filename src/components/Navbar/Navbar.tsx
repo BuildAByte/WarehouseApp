@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -16,6 +16,9 @@ export default function Navbar() {
       </div>
       <div className="navbarItem">
         <Link to="/app/currentMatch">Current Match</Link>
+      </div>
+      <div className="logoutNavbarItem">
+        <Link to="/">Log out</Link>
       </div>
     </div>
   );

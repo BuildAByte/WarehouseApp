@@ -3,13 +3,15 @@
 
   height: 95px;
   width: 100%;
+
   align-items: center;
-  background-color: rgb(57, 43, 43);
-  border-bottom: 6px solid green;
+  background-color: white;
+  border-bottom: 6px solid #4caf50;
 }
 
 .navbarItem {
   display: flex;
+
   flex: 1;
   margin-left: 50px;
   font-size: 34px;
@@ -18,13 +20,18 @@
 
 .navbarItem img {
   size: 20px;
+  font-family: "Rubik";
+}
+
+.logoutNavbarItem {
 }
 
 a {
-  color: beige;
   text-decoration: none;
+  color: #4caf50;
 }
 
-a:hover {
-  color: rgb(216, 24, 53);
+a:hover,
+a:focus {
+  color: black;
 }

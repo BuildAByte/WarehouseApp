@@ -1,16 +1,18 @@
 import { loginWorker } from "../../api/api";
 import "./Login.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  //useEffect needs to be removed when server will be on
+  useEffect(() => {
+    navigate("app/workers");
+  });
   async function login() {
-    console.log(name, password);
     const logUser = await loginWorker(name, password);
-    console.log(logUser);
 
     if (logUser.token) {
       navigate("/app/workers");
