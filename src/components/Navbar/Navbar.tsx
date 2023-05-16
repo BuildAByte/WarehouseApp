@@ -15,7 +15,7 @@ export default function Navbar() {
         <Link to="/app/history">History</Link>
       </div>
       <div className="navbarItem">
-        <Link to="/app/currentMatch">Current Match</Link>
+        <Link to="/app/pivotResults">Pivot Results</Link>
       </div>
       <div className="logoutNavbarItem">
         <Link to="/">Log out</Link>

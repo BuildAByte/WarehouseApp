@@ -7,10 +7,7 @@ function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  //useEffect needs to be removed when server will be on
-  useEffect(() => {
-    navigate("app/workers");
-  });
+
   async function login() {
     const logUser = await loginWorker(name, password);
 
@@ -24,7 +21,7 @@ function Login() {
   }
   return (
     <div className="wrapper">
-      <div className="header">I'm a 30px tall header</div>
+      <div className="header">Welcome to the Warehouse App</div>
       <div className="main">
         <div className="item-container">
           <label>
@@ -56,7 +53,7 @@ function Login() {
           </button>
         </div>
       </div>
-      <div className="footer">I'm a 30px tall footer</div>
+      <div className="footer">Have Fun !! See Ya soon</div>
     </div>
   );
 }
