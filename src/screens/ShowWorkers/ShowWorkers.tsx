@@ -21,12 +21,12 @@ export default function ShowWorkers() {
     setIsAdmin(parse.admin);
   });
   function mapUsers() {
-    return workers.map(({ id, name, admin }, index) => (
+    return workers.map(({ id, name }, index) => (
       <Card
         key={id}
         title={name}
         onClick={() => navigate("/app/add-worker", { state: workers[index] })}
-        data={[id, name, admin]}
+        data={{ Id: id, Name: name }}
       />
     ));
   }

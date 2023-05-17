@@ -8,17 +8,14 @@ interface Props {
 
 function AddWorker(props: Props) {
   function MapData() {
-    return Object.keys(props.data)
-      .slice(1, props.data.length - 1)
-      .map((key: string) => (
-        <p className="card-elements">
-          <em>{props.data[key]}</em>
-        </p>
-      ));
+    return Object.keys(props.data).map((key: string) => (
+      <p className="card-elements">
+        <h2>{key}:</h2> <h2>{props.data[key]}</h2>
+      </p>
+    ));
   }
   return (
     <div onClick={props.onClick} className="wrapper">
-      <h2>{props.title}</h2>
       {MapData()}
     </div>
   );
