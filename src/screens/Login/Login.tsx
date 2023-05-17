@@ -39,7 +39,7 @@ function Login() {
           <label>
             Password:
             <input
-              type="text"
+              type="password"
               name="password"
               onChange={(event) => {
                 setPassword(event.target.value);
