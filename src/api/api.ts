@@ -2,7 +2,7 @@ interface loginResponse {
   token: string;
   user: user;
 }
-const url = "https://warehousebackend-production-d411.up.railway.app";
+const url = "https://warehousebackend-production-7bd5.up.railway.app";
 export interface user {
   id: number;
   name: string;
@@ -69,7 +69,7 @@ export async function getWorks(): Promise<work[]> {
     },
     method: "GET",
   };
-  const result = await fetch(`${url}/picking/${user.id}`, options);
+  const result = await fetch(`${url}/picking`, options);
   return result.json();
 }
 
@@ -102,7 +102,7 @@ export async function createWork(workType: string): Promise<work> {
   return result.json();
 }
 
-export async function getLatestWork(): Promise<work[]> {
+export async function getActiveWork(): Promise<work[]> {
   const token = localStorage.getItem("token");
   const options = {
     headers: {
@@ -110,7 +110,7 @@ export async function getLatestWork(): Promise<work[]> {
     },
     method: "GET",
   };
-  const result = await fetch(`${url}/picking/latest`, options);
+  const result = await fetch(`${url}/picking/active`, options);
   return result.json();
 }
 
