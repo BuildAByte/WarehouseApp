@@ -12,7 +12,8 @@ export default function Works() {
   const navigate = useNavigate();
   useEffect(() => {
     async function get() {
-      setWorks(await getWorks());
+      const result = await getWorks();
+      if (!!result.length) setWorks(result);
     }
     async function getData() {
       setWorkDisplayed(await getLatestWork());
@@ -41,8 +42,6 @@ export default function Works() {
   }
   return (
     <div className="container">
-      {mapLatestWork()}
-      <div className="table-container">{mapWorks()}</div>
       {workDisplayed.length ? undefined : (
         <button
           className="addWorkBtn"
@@ -51,6 +50,8 @@ export default function Works() {
           Add Work
         </button>
       )}
+      {mapLatestWork()}
+      <div className="table-container">{mapWorks()}</div>
     </div>
   );
 }
