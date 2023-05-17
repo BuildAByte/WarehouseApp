@@ -7,6 +7,7 @@ export interface user {
   id: number;
   name: string;
   admin: boolean;
+  password?: string;
 }
 
 export interface work {
@@ -124,5 +125,33 @@ export async function updateWork(work: work) {
     body: JSON.stringify(work),
   };
   const result = await fetch(`${url}/picking/` + work.id, options);
+  return result.json();
+}
+
+export async function updateWorker(worker: user) {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "PUT",
+    body: JSON.stringify(worker),
+  };
+  const result = await fetch(`${url}/worker/` + worker.id, options);
+  return result.json();
+}
+
+export async function deleteWorker(worker: user) {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "DELETE",
+    body: JSON.stringify(worker),
+  };
+  const result = await fetch(`${url}/worker/` + worker.id, options);
   return result.json();
 }
