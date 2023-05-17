@@ -62,7 +62,6 @@ export async function addWorker(name: string, password: string) {
 
 export async function getWorks(): Promise<work[]> {
   const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user")!);
   const options = {
     headers: {
       Authorization: "Bearer " + token,
