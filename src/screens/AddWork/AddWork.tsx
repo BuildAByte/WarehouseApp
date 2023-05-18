@@ -19,6 +19,7 @@ function AddWork() {
   async function addWorkCallback() {
     const add = await createWork(workType);
     console.log(add);
+    navigate("/app/works");
   }
   function mapWorkTypes() {
     return workTypes.map((type) => {

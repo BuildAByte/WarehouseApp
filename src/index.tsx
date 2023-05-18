@@ -11,20 +11,18 @@ import AddWork from "./screens/AddWork/AddWork";
 
 function Main() {
   return (
-    <div className="main">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-          <Route path="/app" element={<App />}>
-            <Route path="/app/workers" element={<ShowWorkers />} />
-            <Route path="/app/add-worker" element={<AddWorker />} />
-            <Route path="/app/works" element={<Works />} />
-            <Route path="/app/add-work" element={<AddWork />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+        <Route path="/app" element={<App />}>
+          <Route path="/app/workers" element={<ShowWorkers />} />
+          <Route path="/app/add-worker" element={<AddWorker />} />
+          <Route path="/app/works" element={<Works />} />
+          <Route path="/app/add-work" element={<AddWork />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

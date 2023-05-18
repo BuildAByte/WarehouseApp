@@ -1,35 +1,16 @@
-.wrapper {
-  height: 100vh;
-  display: flex;
-
-  /* Direction of the items, can be row or column */
-  flex-direction: column;
-}
-
-.header,
-.footer {
-  height: 30px;
-  color: #4caf50;
-  border-bottom: 1px solid #4caf50;
-}
-
-.header {
-  border-top: 1px solid #4caf50;
-  padding: 150px;
-}
-
-.footer {
-  border-top: 1px solid #4caf50;
-  padding: 150px;
-}
-
 .main {
-  flex: 1;
   display: flex;
-  align-items: center;
-  padding: 5px;
-  flex-direction: column;
+  flex: 1;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  margin: 5px;
 }
 
 button {

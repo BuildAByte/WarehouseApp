@@ -37,7 +37,10 @@ export default function Works() {
 
   function mapWorks() {
     return works.map(({ id, work_type, start_timestamp, end_timestamp }) => (
-      <Card data={[id, work_type, start_timestamp, end_timestamp]} />
+      <Card
+        data={[id, work_type, start_timestamp, end_timestamp]}
+        title={work_type}
+      />
     ));
   }
   return (

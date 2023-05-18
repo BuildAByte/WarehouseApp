@@ -1,21 +1,21 @@
 import "./Cards.css";
-
+type AnyArray = Array<number | string | Date | JSX.Element>;
 interface Props {
-  data: any[];
+  data: AnyArray;
+  title: string;
 }
 
 export default function Card(props: Props) {
   function MapData() {
-    return props.data.slice(1, props.data.length - 1).map((item: any) => (
+    return props.data.slice(1, props.data.length).map((item: any) => (
       <p className="card-elements">
         <em>{item}</em>
       </p>
     ));
   }
-  const title = props.data[0];
   return (
     <div className="card-container">
-      <h1>{title}</h1>
+      <h1>{props.title}</h1>
       {MapData()}
     </div>
   );
