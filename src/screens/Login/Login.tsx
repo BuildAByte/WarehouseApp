@@ -20,30 +20,38 @@ function Login() {
     }
   }
   return (
-    <div className="main">
-      <label>
-        Name:
-        <input
-          type="text"
-          name="name"
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-      </label>
-      <button onClick={login} type="button">
-        Login
-      </button>
+    <div className="loginPage">
+      <div className="loginHeader">
+        <h1>Welcome to warehouse app</h1>
+      </div>
+      <div className="main">
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </label>
+        <button onClick={login} type="button">
+          Login
+        </button>
+        <div className="loginFooter">
+          <h2>Have Fun!! See ya Soon</h2>
+        </div>
+      </div>
     </div>
   );
 }

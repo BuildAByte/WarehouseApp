@@ -8,6 +8,7 @@ import AddWorker from "./screens/AddWorker/AddWorker";
 import App from "./screens/App/App";
 import Works from "./screens/Works/Works";
 import AddWork from "./screens/AddWork/AddWork";
+import History from "./screens/History/History";
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
           <Route path="/app/workers" element={<ShowWorkers />} />
           <Route path="/app/add-worker" element={<AddWorker />} />
           <Route path="/app/works" element={<Works />} />
+          <Route path="/app/history" element={<History />} />
           <Route path="/app/add-work" element={<AddWork />} />
         </Route>
       </Routes>

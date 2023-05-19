@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getActiveWork, getWorks, work } from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Card/Cards";
+import Card from "../../components/CardV2/Card";
 
 export default function Works() {
   const [works, setWorks] = useState<work[]>([]);
@@ -23,26 +23,17 @@ export default function Works() {
   });
   function mapLatestWork() {
     return workDisplayed.map((work) => (
-      <div
-        key={work.id}
-        className="activeWork"
-        onClick={() => {
-          navigate("/app/add-work", { state: { work } });
-        }}
-      >
-        <p>{JSON.stringify(work)}</p>
-      </div>
-    ));
-  }
-
-  function mapWorks() {
-    return works.map(({ id, work_type, start_timestamp, end_timestamp }) => (
       <Card
-        data={[id, work_type, start_timestamp, end_timestamp]}
-        title={work_type}
+        color="red"
+        data={work}
+        title={`${work.id}`}
+        onClick={() => {
+          navigate(`/app/add-work`, { state: work });
+        }}
       />
     ));
   }
+
   return (
     <div className="container">
       {workDisplayed.length ? undefined : (
@@ -53,8 +44,8 @@ export default function Works() {
           Add Work
         </button>
       )}
-      {mapLatestWork()}
-      <div className="table-container">{mapWorks()}</div>
+
+      <div className="table-container">{mapLatestWork()}</div>
     </div>
   );
 }

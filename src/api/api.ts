@@ -154,3 +154,16 @@ export async function deleteWorker(worker: user) {
   const result = await fetch(`${url}/worker/` + worker.id, options);
   return result.json();
 }
+
+export async function getAllPickingsAdmin() {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "GET",
+  };
+  const result = await fetch(`${url}/picking/all`, options);
+  return result.json() as Promise<work[]>;
+}

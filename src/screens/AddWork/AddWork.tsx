@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AddWork() {
-  const activeWork = useLocation().state?.work ?? undefined;
+  const activeWork = useLocation().state ?? undefined;
   const [work] = useState<work | undefined>(activeWork);
   const [workTypes, setWorkTypes] = useState<string[]>([]);
   const [workType, setWorkType] = useState<string>("picking");

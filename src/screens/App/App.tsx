@@ -5,9 +5,12 @@ import { Outlet } from "react-router-dom";
 export default function App() {
   return (
     <div className="main">
-      <Navbar />
-
-      <Outlet />
+      <div className="headerApp">
+        <Navbar />
+      </div>
+      <div className="containerApp">
+        <Outlet />
+      </div>
     </div>
   );
 }
