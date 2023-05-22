@@ -14,7 +14,12 @@ export default function ShowResults() {
 
   function generateTable() {
     return workersWithTime.map(({ name, time }) => {
-      return <Card color="green" data={{ Name: name, "Hours Worked": time }} />;
+      return (
+        <Card
+          color="green"
+          data={{ Name: name, "Hours Worked": isNaN(time) ? 0 : time }}
+        />
+      );
     });
   }
   return <div>{generateTable()}</div>;
