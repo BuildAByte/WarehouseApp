@@ -21,9 +21,6 @@ export default function AssignWork() {
       const resultWorkTypes = await getWorkTypes();
       setWorkType(resultWorkTypes);
       setWorkers(resultWorkers);
-
-      setSelectedWorkType(resultWorkTypes[0]);
-      setSelectedWorker(resultWorkers[0]);
     }
     fetch();
   });
@@ -44,6 +41,7 @@ export default function AssignWork() {
     const worker = workers[index];
     console.log(worker, index);
     setSelectedWorker(worker);
+    console.log(selectedWorker);
   }
 
   function assignWork(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -55,6 +53,7 @@ export default function AssignWork() {
     if (!selectedWorker || !selectedWorkType) {
       return alert("Please select a worker and a work type");
     }
+    console.log(selectedWorker, selectedWorkType);
     await assignWorkToWorker(selectedWorker!.id, selectedWorkType);
     return navigate("/app/works");
   }
