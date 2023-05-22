@@ -39,9 +39,7 @@ export default function AssignWork() {
   function assignWorker(event: React.ChangeEvent<HTMLSelectElement>) {
     const index = event.target.value as unknown as number;
     const worker = workers[index];
-    console.log(worker, index);
     setSelectedWorker(worker);
-    console.log(selectedWorker);
   }
 
   function assignWork(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -53,7 +51,6 @@ export default function AssignWork() {
     if (!selectedWorker || !selectedWorkType) {
       return alert("Please select a worker and a work type");
     }
-    console.log(selectedWorker, selectedWorkType);
     await assignWorkToWorker(selectedWorker!.id, selectedWorkType);
     return navigate("/app/works");
   }
