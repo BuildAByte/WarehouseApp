@@ -19,15 +19,30 @@ export default function Works() {
     get();
   });
   function mapLatestWork() {
-    return works.map((work) => (
-      <Card
-        color={work.end_timestamp ? "green" : "red"}
-        data={work}
-        onClick={() => {
-          navigate(`/app/add-work`, { state: work });
-        }}
-      />
-    ));
+    return works.map((work) => {
+      const { work_type, start_timestamp, end_timestamp } = work;
+      const [startDate, startTime] = start_timestamp.split("T");
+      const [endDate, endTime] = end_timestamp?.split("T") ?? [
+        "Unfinished",
+        "Unfinished",
+      ];
+
+      return (
+        <Card
+          color={work.end_timestamp ? "green" : "red"}
+          data={{
+            "Work Type": work_type,
+            "Start Date": startDate,
+            "Start Time": startTime,
+            "End Date": endDate,
+            "End Time": endTime,
+          }}
+          onClick={() => {
+            navigate(`/app/add-work`, { state: work });
+          }}
+        />
+      );
+    });
   }
 
   return (

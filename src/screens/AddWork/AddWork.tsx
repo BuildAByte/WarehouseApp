@@ -37,34 +37,34 @@ function AddWork() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="main">
-        {work ? (
-          <button onClick={finishWork}>Finish Work</button>
-        ) : (
-          <div>
-            <label>Choose a work:</label>
+    <div className="wrapperAddWork">
+      {work ? (
+        <button onClick={finishWork} className="btnFinishWork">
+          Finish Work
+        </button>
+      ) : (
+        <div>
+          <label>Choose a work:</label>
 
-            <select
-              name="work"
-              id="worktypes"
-              onChange={(event) => {
-                setWorkType(event.target.value);
-              }}
-            >
-              <option value="" selected={true}>
-                Select Work Type
-              </option>
-              {mapWorkTypes()}
-            </select>
-            <div className="item-container">
-              <button onClick={addWorkCallback} type="button">
-                Declare work
-              </button>
-            </div>
+          <select
+            name="work"
+            id="worktypes"
+            onChange={(event) => {
+              setWorkType(event.target.value);
+            }}
+          >
+            <option value="" selected={true}>
+              Select Work Type
+            </option>
+            {mapWorkTypes()}
+          </select>
+          <div className="item-container">
+            <button onClick={addWorkCallback} type="button">
+              Declare work
+            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

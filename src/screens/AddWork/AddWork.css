@@ -1,5 +1,6 @@
-.container {
+.wrapperAddWork {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
 }
@@ -7,4 +8,10 @@
 .item-container {
   bottom: 50px;
   right: 50px;
+}
+
+.btnFinishWork {
+  position: fixed;
+  bottom: 50%;
+  right: 50%;
 }
