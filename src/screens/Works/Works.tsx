@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  getActiveWork,
-  getAllPickingsAdmin,
-  getWorks,
-  user,
-  work,
-} from "../../api/api";
+import { getAllPickingsAdmin, getWorks, user, work } from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/CardV2/Card";
@@ -14,7 +8,6 @@ import Card from "../../components/CardV2/Card";
 export default function Works() {
   const [works, setWorks] = useState<work[]>([]);
   const { admin: isAdmin } = JSON.parse(localStorage.getItem("user")!) as user;
-  const hasUnfinishedWork = () => works.some((work) => !work.end_timestamp);
 
   const navigate = useNavigate();
   useEffect(() => {

@@ -6,7 +6,6 @@ import Card from "../../components/CardV2/Card";
 
 export default function ShowWorkers() {
   const [workers, setWorkers] = useState<user[]>([]);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const navigate = useNavigate();
   useEffect(() => {
     const getAllWorkers = async () => {
@@ -14,16 +13,12 @@ export default function ShowWorkers() {
       setWorkers(workerResult);
     };
     getAllWorkers();
-    const userString = localStorage.getItem("user");
-    const parse = JSON.parse(userString!) as user;
-    setIsAdmin(parse.admin);
   });
   function mapUsers() {
     return workers.map(({ id, name }, index) => (
       <Card
         color="green"
         key={id}
-        title={name}
         onClick={() => navigate("/app/add-worker", { state: workers[index] })}
         data={{ Id: id, Name: name }}
       />
