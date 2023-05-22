@@ -12,7 +12,7 @@ function Login() {
     const logUser = await loginWorker(name, password);
 
     if (logUser.token) {
-      navigate("/app/workers");
+      navigate("/app/works");
       localStorage.setItem("token", logUser.token);
       localStorage.setItem("user", JSON.stringify(logUser.user));
     } else {

@@ -10,6 +10,8 @@ export interface user {
   password?: string;
 }
 
+export type userWithTime = user & { time: number };
+
 export interface work {
   id: number;
   work_type: string;
@@ -72,6 +74,23 @@ export async function getWorks(): Promise<work[]> {
   return result.json();
 }
 
+export async function assignWorkToWorker(
+  workerId: number,
+  workType: string
+): Promise<work> {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "POST",
+    body: JSON.stringify({ workerId, workType }),
+  };
+  const result = await fetch(`${url}/picking/assign`, options);
+  return result.json();
+}
+
 export async function getWorkTypes(): Promise<string[]> {
   const token = localStorage.getItem("token");
   const options = {
@@ -125,6 +144,18 @@ export async function updateWork(work: work) {
   };
   const result = await fetch(`${url}/picking/` + work.id, options);
   return result.json();
+}
+
+export async function getTimeSpentByWorkers() {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    method: "GET",
+  };
+  const result = await fetch(`${url}/picking/time`, options);
+  return (await result.json()) as Array<userWithTime>;
 }
 
 export async function updateWorker(worker: user) {

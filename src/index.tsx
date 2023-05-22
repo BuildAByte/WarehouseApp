@@ -8,7 +8,8 @@ import AddWorker from "./screens/AddWorker/AddWorker";
 import App from "./screens/App/App";
 import Works from "./screens/Works/Works";
 import AddWork from "./screens/AddWork/AddWork";
-import History from "./screens/History/History";
+import AssignWork from "./screens/AssignWork/AssignWork";
+import ShowResults from "./screens/ShowResults/ShowResults";
 
 function Main() {
   return (
@@ -17,11 +18,13 @@ function Main() {
         <Route path="/" element={<Login />} />
 
         <Route path="/app" element={<App />}>
+          <Route path="/app/works" element={<Works />} />
+          <Route path="/app/add-work" element={<AddWork />} />
+
           <Route path="/app/workers" element={<ShowWorkers />} />
           <Route path="/app/add-worker" element={<AddWorker />} />
-          <Route path="/app/works" element={<Works />} />
-          <Route path="/app/history" element={<History />} />
-          <Route path="/app/add-work" element={<AddWork />} />
+          <Route path="/app/assignWork" element={<AssignWork />} />
+          <Route path="/app/time" element={<ShowResults />} />
         </Route>
       </Routes>
     </BrowserRouter>

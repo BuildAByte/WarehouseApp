@@ -2,7 +2,6 @@ import "./Card.css";
 
 interface Props {
   data: Record<string, any>;
-  title: string;
   onClick?: () => void;
   color: "red" | "green";
 }
@@ -10,9 +9,9 @@ interface Props {
 function AddWorker(props: Props) {
   function MapData() {
     return Object.keys(props.data).map((key: string) => (
-      <p className="card-elements">
+      <div>
         <h2>{key}:</h2> <h2>{props.data[key]}</h2>
-      </p>
+      </div>
     ));
   }
 

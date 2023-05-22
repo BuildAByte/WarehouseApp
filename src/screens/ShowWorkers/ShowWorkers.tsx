@@ -11,9 +11,7 @@ export default function ShowWorkers() {
   useEffect(() => {
     const getAllWorkers = async () => {
       const workerResult = await getWorkers();
-      if (!!workerResult.length) {
-        setWorkers(workerResult);
-      }
+      setWorkers(workerResult);
     };
     getAllWorkers();
     const userString = localStorage.getItem("user");
@@ -23,6 +21,7 @@ export default function ShowWorkers() {
   function mapUsers() {
     return workers.map(({ id, name }, index) => (
       <Card
+        color="green"
         key={id}
         title={name}
         onClick={() => navigate("/app/add-worker", { state: workers[index] })}
@@ -30,17 +29,27 @@ export default function ShowWorkers() {
       />
     ));
   }
+
+  const adminButtons: Array<{ route: string; title: string }> = [
+    {
+      route: "/app/add-worker",
+      title: "Add Worker",
+    },
+    { route: "/app/assignWork", title: "Assign Work" },
+  ];
+
+  function mapAdminButtons() {
+    return adminButtons.map(({ route, title }) => (
+      <button onClick={() => navigate(route)} key={route}>
+        {title}
+      </button>
+    ));
+  }
+
   return (
     <div className="container">
       {mapUsers()}
-      {isAdmin ? (
-        <button
-          className="addWorkerBtn"
-          onClick={() => navigate("/app/add-worker")}
-        >
-          Add Worker
-        </button>
-      ) : undefined}
+      <div className="showWorkersAdminButtonContainer">{mapAdminButtons()}</div>
     </div>
   );
 }

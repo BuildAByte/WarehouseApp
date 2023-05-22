@@ -1,32 +1,35 @@
 import { useEffect, useState } from "react";
 
-import { getActiveWork, getWorks, work } from "../../api/api";
+import {
+  getActiveWork,
+  getAllPickingsAdmin,
+  getWorks,
+  user,
+  work,
+} from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/CardV2/Card";
 
 export default function Works() {
   const [works, setWorks] = useState<work[]>([]);
-  const [workDisplayed, setWorkDisplayed] = useState<work[]>([]);
+  const { admin: isAdmin } = JSON.parse(localStorage.getItem("user")!) as user;
+  const hasUnfinishedWork = () => works.some((work) => !work.end_timestamp);
 
   const navigate = useNavigate();
   useEffect(() => {
     async function get() {
-      const result = await getWorks();
-      if (!!result.length) setWorks(result);
+      const fetchWorks = isAdmin ? getAllPickingsAdmin : getWorks;
+      const result = await fetchWorks();
+      setWorks(result);
     }
-    async function getData() {
-      setWorkDisplayed(await getActiveWork());
-    }
-    getData();
     get();
   });
   function mapLatestWork() {
-    return workDisplayed.map((work) => (
+    return works.map((work) => (
       <Card
-        color="red"
+        color={work.end_timestamp ? "green" : "red"}
         data={work}
-        title={`${work.id}`}
         onClick={() => {
           navigate(`/app/add-work`, { state: work });
         }}
@@ -36,14 +39,9 @@ export default function Works() {
 
   return (
     <div className="container">
-      {workDisplayed.length ? undefined : (
-        <button
-          className="addWorkBtn"
-          onClick={() => navigate("/app/add-work")}
-        >
-          Add Work
-        </button>
-      )}
+      <button className="addWorkBtn" onClick={() => navigate("/app/add-work")}>
+        Add Work
+      </button>
 
       <div className="table-container">{mapLatestWork()}</div>
     </div>
