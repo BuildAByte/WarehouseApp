@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { user } from "../../api/api";
 
-const routes = [
-  { path: "/app/works", name: "Works" },
-  { path: "/app/pivotResults", name: "Pivot Results" },
-];
+const routes = [{ path: "/app/works", name: "Works" }];
 const adminRoutes = [
   { path: "/app/workers", name: "Workers" },
   { path: "/app/time", name: "Results" },

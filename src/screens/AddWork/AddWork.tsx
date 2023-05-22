@@ -52,6 +52,9 @@ function AddWork() {
                 setWorkType(event.target.value);
               }}
             >
+              <option value="" selected={true}>
+                Select Work Type
+              </option>
               {mapWorkTypes()}
             </select>
             <div className="item-container">

@@ -60,12 +60,19 @@ export default function AssignWork() {
       <div>
         <label>Workers:</label>
         <select name="workers" id="workers" onChange={assignWorker}>
+          <option value="" selected={true}>
+            Select Worker
+          </option>
+
           {generateWorkerOptions()}
         </select>
       </div>
       <div>
         <label>Work:</label>
         <select name="work" id="work" onChange={assignWork}>
+          <option value="" selected={true}>
+            Select Work Type
+          </option>
           {generateWorkTypes()}
         </select>
       </div>
