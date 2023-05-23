@@ -43,7 +43,7 @@ function AddWork() {
           Finish Work
         </button>
       ) : (
-        <div>
+        <div className="addWorkInputs">
           <label>Choose a work:</label>
 
           <select

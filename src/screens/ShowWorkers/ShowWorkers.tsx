@@ -42,7 +42,7 @@ export default function ShowWorkers() {
   }
 
   return (
-    <div className="container">
+    <div className="containerShowWorkers">
       {mapUsers()}
       <div className="showWorkersAdminButtonContainer">{mapAdminButtons()}</div>
     </div>

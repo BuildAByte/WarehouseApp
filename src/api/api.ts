@@ -154,6 +154,7 @@ export async function getTimeSpentByWorkers() {
     },
     method: "GET",
   };
+
   const result = await fetch(`${url}/picking/time`, options);
   return (await result.json()) as Array<userWithTime>;
 }

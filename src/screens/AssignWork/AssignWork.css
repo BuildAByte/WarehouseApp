@@ -17,3 +17,24 @@ button:focus {
   background-color: #464b46;
   color: white;
 }
+
+.containerAssignWork {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  flex-direction: column;
+}
+
+select,
+option {
+  border-color: transparent transparent transparent;
+}
+
+.inputAssignWork {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}

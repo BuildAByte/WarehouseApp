@@ -56,8 +56,8 @@ export default function AssignWork() {
   }
 
   return (
-    <div>
-      <div>
+    <div className="containerAssignWork">
+      <div className="inputAssignWork">
         <label>Workers:</label>
         <select name="workers" id="workers" onChange={assignWorker}>
           <option value="" selected={true}>
@@ -67,7 +67,7 @@ export default function AssignWork() {
           {generateWorkerOptions()}
         </select>
       </div>
-      <div>
+      <div className="inputAssignWork">
         <label>Work:</label>
         <select name="work" id="work" onChange={assignWork}>
           <option value="" selected={true}>

@@ -9,7 +9,7 @@ interface Props {
 function AddWorker(props: Props) {
   function MapData() {
     return Object.keys(props.data).map((key: string) => (
-      <div>
+      <div className="cardItem">
         <h2>{key}:</h2> <h2>{props.data[key]}</h2>
       </div>
     ));
@@ -35,7 +35,7 @@ function AddWorker(props: Props) {
       ? { ...style.wrapperBase, ...style.wrapperRed }
       : { ...style.wrapperBase, ...style.wrapperGreen };
   return (
-    <div onClick={props.onClick} className="wrapperCard" style={chosenStyle}>
+    <div onClick={props.onClick} style={chosenStyle}>
       {MapData()}
     </div>
   );

@@ -10,6 +10,19 @@
   right: 50px;
 }
 
+.addWorkInputs {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+select {
+  border-radius: 10px;
+  padding: 5px;
+}
+
 .btnFinishWork {
   position: fixed;
   bottom: 50%;

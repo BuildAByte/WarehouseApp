@@ -3,3 +3,12 @@ h2 {
   font-weight: bold;
   margin: 3px;
 }
+
+.cardItem {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}

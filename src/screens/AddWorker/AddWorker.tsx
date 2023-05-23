@@ -29,51 +29,49 @@ function AddWorker() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="main">
-        <div className="item-container">
-          <label>
-            Name:
-            <input
-              value={name}
-              type="text"
-              name="name"
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-          </label>
-        </div>
-        <div className="item-container">
-          <label>
-            Password:
-            <input
-              type="text"
-              name="password"
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-            />
-          </label>
-        </div>
-        <div className="item-container">
+    <div className="mainAddWorker">
+      <div className="item-container">
+        <label>
+          Name:
+          <input
+            value={name}
+            type="text"
+            name="name"
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+          />
+        </label>
+      </div>
+      <div className="item-container">
+        <label>
+          Password:
+          <input
+            type="text"
+            name="password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </label>
+      </div>
+      <div className="item-container">
+        <button
+          className="button"
+          onClick={user ? updateWorkerCallback : addWorkerCallback}
+          type="button"
+        >
+          {user ? "Update" : "Add"}
+        </button>
+        {user ? (
           <button
-            className="button"
-            onClick={user ? updateWorkerCallback : addWorkerCallback}
+            className="buttonDelete"
+            onClick={deleteWorkerCallback}
             type="button"
           >
-            {user ? "Update" : "Add"}
+            Delete
           </button>
-          {user ? (
-            <button
-              className="buttonDelete"
-              onClick={deleteWorkerCallback}
-              type="button"
-            >
-              Delete
-            </button>
-          ) : undefined}
-        </div>
+        ) : undefined}
       </div>
     </div>
   );
