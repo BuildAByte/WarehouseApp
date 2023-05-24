@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { getTimeSpentByWorkers, userWithTime } from "../../api/api";
-import Card from "../../components/CardV2/Card";
+import {
+  WorkerToWorkTypeMapped,
+  getTimeSpentByWorkers,
+  userWithTime,
+} from "../../api/api";
+import Table from "../../components/Table/Table";
 
 export default function ShowResults() {
-  const [workersWithTime, setWorkersWithTime] = useState<userWithTime[]>([]);
+  const [workersWithTime, setWorkersWithTime] =
+    useState<WorkerToWorkTypeMapped>({});
   useEffect(() => {
     const getTimeSpent = async () => {
       const workers = await getTimeSpentByWorkers();
@@ -13,14 +18,16 @@ export default function ShowResults() {
   });
 
   function generateTable() {
-    return workersWithTime.map(({ name, time }) => {
+    return Object.entries(workersWithTime).map(([worker, workTypes]) => {
       return (
-        <Card
-          color="green"
-          data={{ Name: name, "Hours Worked": isNaN(time) ? 0 : time }}
+        <Table
+          title={worker}
+          headers={Object.keys(workTypes)}
+          data={Object.values(workTypes)}
         />
       );
     });
   }
+
   return <div>{generateTable()}</div>;
 }

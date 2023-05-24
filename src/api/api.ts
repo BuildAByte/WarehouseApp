@@ -2,7 +2,9 @@ interface loginResponse {
   token: string;
   user: user;
 }
+
 const url = "https://warehousebackend-production-7bd5.up.railway.app";
+
 export interface user {
   id: number;
   name: string;
@@ -11,6 +13,20 @@ export interface user {
 }
 
 export type userWithTime = user & { time: number };
+
+export enum WorkType {
+  PICKING = "picking",
+  PACKING = "packing",
+  LABELLING = "labelling",
+  "LIQUID PRODUCTION" = "liquid production",
+  PREPARATION = "preparation",
+  CHECKING = "checking",
+  RESTOCKING = "restocking",
+  "SUB DIVISION" = "sub division",
+}
+
+type WorkTypesToTimeSpent = Record<WorkType, number>;
+export type WorkerToWorkTypeMapped = Record<string, WorkTypesToTimeSpent>;
 
 export interface work {
   id: number;
@@ -156,7 +172,7 @@ export async function getTimeSpentByWorkers() {
   };
 
   const result = await fetch(`${url}/picking/time`, options);
-  return (await result.json()) as Array<userWithTime>;
+  return (await result.json()) as WorkerToWorkTypeMapped;
 }
 
 export async function updateWorker(worker: user) {
