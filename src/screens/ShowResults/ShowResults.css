@@ -2,3 +2,10 @@
   width: 100%;
   margin: 20px;
 }
+
+.showResultsButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -215,3 +215,16 @@ export async function getAllPickingsAdmin() {
   const result = await fetch(`${url}/picking/all`, options);
   return result.json() as Promise<work[]>;
 }
+
+export async function downloadCsv() {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "GET",
+  };
+  const result = await fetch(`${url}/picking/csv`, options);
+  return result.blob();
+}
