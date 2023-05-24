@@ -30,10 +30,8 @@ export default function Table({ headers, data, title }: TableProps) {
     <div className="tableParent">
       <h1>{title}</h1>
       <table>
-        <thead>
-          <tr>{generateHeaders()}</tr>
-        </thead>
-        <tbody>{generateRows()}</tbody>
+        <tr>{generateHeaders()}</tr>
+        {generateRows()}
       </table>
       <div className="tableFooter"></div>
     </div>

@@ -1,16 +1,11 @@
 table {
-  border-collapse: collapse;
-  display: flex;
-  flex: 1;
   width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
