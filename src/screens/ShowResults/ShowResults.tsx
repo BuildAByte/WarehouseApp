@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  WorkerToWorkTypeMapped,
-  getTimeSpentByWorkers,
-  userWithTime,
-} from "../../api/api";
+import { WorkerToWorkTypeMapped, getTimeSpentByWorkers } from "../../api/api";
 import Table from "../../components/Table/Table";
 
 export default function ShowResults() {
@@ -23,7 +19,7 @@ export default function ShowResults() {
         <Table
           title={worker}
           headers={Object.keys(workTypes)}
-          data={Object.values(workTypes)}
+          data={[Object.values(workTypes)]}
         />
       );
     });

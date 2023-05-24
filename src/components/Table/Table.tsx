@@ -5,7 +5,7 @@ type DataType = string | number | boolean;
 interface TableProps {
   title: string;
   headers: string[];
-  data: DataType[];
+  data: Array<Array<DataType>>;
 }
 
 export default function Table({ headers, data, title }: TableProps) {
@@ -17,9 +17,13 @@ export default function Table({ headers, data, title }: TableProps) {
 
   function generateRows() {
     const tableData = data.map((row) => {
-      return <td>{row}</td>;
+      return row.map((data) => {
+        return <td>{data}</td>;
+      });
     });
-    return <tr>{tableData}</tr>;
+    return tableData.map((tableData) => {
+      return <tr>{tableData}</tr>;
+    });
   }
 
   return (

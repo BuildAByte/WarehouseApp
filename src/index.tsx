@@ -10,7 +10,6 @@ import Works from "./screens/Works/Works";
 import AddWork from "./screens/AddWork/AddWork";
 import AssignWork from "./screens/AssignWork/AssignWork";
 import ShowResults from "./screens/ShowResults/ShowResults";
-import { PivotResults } from "./screens/PivotResults/PivotResults";
 
 function Main() {
   return (
@@ -25,7 +24,6 @@ function Main() {
           <Route path="/app/workers" element={<ShowWorkers />} />
           <Route path="/app/add-worker" element={<AddWorker />} />
           <Route path="/app/assignWork" element={<AssignWork />} />
-          <Route path="/app/pivot-results" element={<PivotResults />} />
           <Route path="/app/time" element={<ShowResults />} />
         </Route>
       </Routes>

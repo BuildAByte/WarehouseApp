@@ -6,7 +6,6 @@ const routes = [{ path: "/app/works", name: "Works" }];
 const adminRoutes = [
   { path: "/app/workers", name: "Workers" },
   { path: "/app/time", name: "Results" },
-  { path: "/app/pivot-results", name: "Pivot Results" },
 ];
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user")!) as user;
