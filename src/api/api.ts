@@ -2,7 +2,10 @@ interface loginResponse {
   token: string;
   user: user;
 }
-const url = "https://warehousebackend-production-7bd5.up.railway.app";
+
+const url = "http://localhost:3000";
+
+//const url = "https://warehousebackend-production-7bd5.up.railway.app";
 
 export interface user {
   id: number;
@@ -253,5 +256,18 @@ export async function downloadCsv() {
     method: "GET",
   };
   const result = await fetch(`${url}/picking/csv`, options);
+  return result.blob();
+}
+
+export async function downloadSubtaskCsv() {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "GET",
+  };
+  const result = await fetch(`${url}/picking/subtasks/csv`, options);
   return result.blob();
 }
