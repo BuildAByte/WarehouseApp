@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import {
   WorkerToWorkTypeMapped,
   downloadCsv,
+  downloadSubtaskCsv,
   getTimeSpentByWorkers,
 } from "../../api/api";
 import Table from "../../components/Table/Table";
 import "./ShowResults.css";
 import download from "downloadjs";
-import Calendar from "react-calendar";
 
 export default function ShowResults() {
   const [workersWithTime, setWorkersWithTime] =
@@ -38,10 +38,18 @@ export default function ShowResults() {
         <button
           onClick={async () => {
             const csv = await downloadCsv();
-            download(csv, "time.csv", "text/csv");
+            download(csv, "work.csv", "text/csv");
           }}
         >
-          Download
+          Download Work Report
+        </button>
+        <button
+          onClick={async () => {
+            const csv = await downloadSubtaskCsv();
+            download(csv, "subtasks.csv", "text/csv");
+          }}
+        >
+          Download Sub Task Report
         </button>
       </div>
 
