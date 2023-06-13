@@ -2,7 +2,6 @@ interface loginResponse {
   token: string;
   user: user;
 }
-
 const url = "https://warehousebackend-production-7bd5.up.railway.app";
 
 export interface user {
@@ -30,7 +29,7 @@ export type WorkerToWorkTypeMapped = Record<string, WorkTypesToTimeSpent>;
 
 export interface work {
   id: number;
-  work_type: string;
+  work_type: WorkType;
   start_timestamp: string;
   end_timestamp: string;
   worker_id: number;
@@ -136,6 +135,18 @@ export async function createWork(workType: string): Promise<work> {
   return result.json();
 }
 
+export async function deleteWork(workId: number) {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    method: "DELETE",
+  };
+  const result = await fetch(`${url}/picking/` + workId, options);
+  return result.json();
+}
+
 export async function getActiveWork(): Promise<work[]> {
   const token = localStorage.getItem("token");
   const options = {
@@ -148,7 +159,11 @@ export async function getActiveWork(): Promise<work[]> {
   return result.json();
 }
 
-export async function updateWork(work: work) {
+export async function updateWork(
+  workId: number,
+  subtask?: string,
+  subtaskQuantity?: number
+) {
   const token = localStorage.getItem("token");
   const options = {
     headers: {
@@ -156,9 +171,21 @@ export async function updateWork(work: work) {
       Authorization: "Bearer " + token,
     },
     method: "PUT",
-    body: JSON.stringify(work),
+    body: JSON.stringify({ subtask, subtaskQuantity }),
   };
-  const result = await fetch(`${url}/picking/` + work.id, options);
+  const result = await fetch(`${url}/picking/` + workId, options);
+  return result.json();
+}
+
+export async function getSubTasks(workType: WorkType) {
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+    method: "GET",
+  };
+  const result = await fetch(`${url}/picking/subtasks/${workType}`, options);
   return result.json();
 }
 
@@ -213,7 +240,7 @@ export async function getAllPickingsAdmin() {
     method: "GET",
   };
   const result = await fetch(`${url}/picking/all`, options);
-  return result.json() as Promise<work[]>;
+  return result.json() as Promise<Array<work & { worker_name: string }>>;
 }
 
 export async function downloadCsv() {

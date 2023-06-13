@@ -20,23 +20,34 @@ export default function Works() {
   });
   function mapLatestWork() {
     return works.map((work) => {
-      const { work_type, start_timestamp, end_timestamp } = work;
+      const { work_type, start_timestamp, end_timestamp, worker_name } =
+        work as work & {
+          worker_name: string;
+        };
       const [startDate, startTime] = start_timestamp.split("T");
       const [endDate, endTime] = end_timestamp?.split("T") ?? [
         "Unfinished",
         "Unfinished",
       ];
+      let baseData = {
+        "Work Type": work_type,
+        "Start Date": startDate,
+        "Start Time": startTime,
+        "End Date": endDate,
+        "End Time": endTime,
+      };
+
+      const data = isAdmin
+        ? {
+            ...{ "Worker Name": worker_name },
+            ...baseData,
+          }
+        : baseData;
 
       return (
         <Card
           color={work.end_timestamp ? "green" : "red"}
-          data={{
-            "Work Type": work_type,
-            "Start Date": startDate,
-            "Start Time": startTime,
-            "End Date": endDate,
-            "End Time": endTime,
-          }}
+          data={data}
           onClick={() => {
             navigate(`/app/add-work`, { state: work });
           }}
