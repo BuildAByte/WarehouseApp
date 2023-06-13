@@ -8,7 +8,8 @@ th {
   text-align: center;
   padding: 8px;
 }
-
+th:focus {
+}
 th {
   background-color: #4caf50;
   color: white;
@@ -25,7 +26,6 @@ tr:nth-child(even) {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
 }
 
 .tableFooter {
