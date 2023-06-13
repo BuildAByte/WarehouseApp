@@ -3,9 +3,7 @@ interface loginResponse {
   user: user;
 }
 
-const url = "http://localhost:3000";
-
-//const url = "https://warehousebackend-production-7bd5.up.railway.app";
+const url = "https://warehousebackend-production-7bd5.up.railway.app";
 
 export interface user {
   id: number;
