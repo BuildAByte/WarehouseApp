@@ -266,6 +266,6 @@ export async function downloadSubtaskCsv() {
     },
     method: "GET",
   };
-  const result = await fetch(`${url}/picking/subtasks/csv`, options);
+  const result = await fetch(`${url}/picking/subtasks_csv`, options);
   return result.blob();
 }
