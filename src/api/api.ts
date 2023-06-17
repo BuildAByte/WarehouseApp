@@ -3,6 +3,16 @@ interface loginResponse {
   user: user;
 }
 
+export enum Milliseconds {
+  SECOND = 1000,
+  MINUTE = 60 * SECOND,
+  HOUR = 60 * MINUTE,
+  DAY = 24 * HOUR,
+  WEEK = 7 * DAY,
+  MONTH = 30 * DAY,
+}
+
+// const url = "http://localhost:3000";
 const url = "https://warehousebackend-production-7bd5.up.railway.app";
 
 export interface user {
@@ -190,7 +200,10 @@ export async function getSubTasks(workType: WorkType) {
   return result.json();
 }
 
-export async function getTimeSpentByWorkers() {
+export async function getTimeSpentByWorkers(
+  startTimestamp = new Date(Date.now() - Milliseconds.MONTH),
+  endTimestamp = new Date()
+) {
   const token = localStorage.getItem("token");
   const options = {
     headers: {
@@ -199,7 +212,10 @@ export async function getTimeSpentByWorkers() {
     method: "GET",
   };
 
-  const result = await fetch(`${url}/picking/time`, options);
+  const result = await fetch(
+    `${url}/picking/time/${startTimestamp.toISOString()}/${endTimestamp.toISOString()}`,
+    options
+  );
   return (await result.json()) as WorkerToWorkTypeMapped;
 }
 
@@ -244,7 +260,10 @@ export async function getAllPickingsAdmin() {
   return result.json() as Promise<Array<work & { worker_name: string }>>;
 }
 
-export async function downloadCsv() {
+export async function downloadCsv(
+  startTimestamp = new Date(Date.now() - Milliseconds.MONTH),
+  endTimestamp = new Date()
+) {
   const token = localStorage.getItem("token");
   const options = {
     headers: {
@@ -253,11 +272,17 @@ export async function downloadCsv() {
     },
     method: "GET",
   };
-  const result = await fetch(`${url}/picking/csv`, options);
+  const result = await fetch(
+    `${url}/picking/csv/${startTimestamp.toISOString()}/${endTimestamp.toISOString()}`,
+    options
+  );
   return result.blob();
 }
 
-export async function downloadSubtaskCsv() {
+export async function downloadSubtaskCsv(
+  startTimestamp = new Date(Date.now() - Milliseconds.MONTH),
+  endTimestamp = new Date()
+) {
   const token = localStorage.getItem("token");
   const options = {
     headers: {
@@ -266,6 +291,9 @@ export async function downloadSubtaskCsv() {
     },
     method: "GET",
   };
-  const result = await fetch(`${url}/picking/subtasks_csv`, options);
+  const result = await fetch(
+    `${url}/picking/subtasks_csv/${startTimestamp.toISOString()}/${endTimestamp.toISOString()}`,
+    options
+  );
   return result.blob();
 }

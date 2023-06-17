@@ -22,7 +22,7 @@ function AddWorker(props: Props) {
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
-
+      maxHeight: "10%",
       height: "10%",
       borderRadius: "20px",
       margin: "20px",

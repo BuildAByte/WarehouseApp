@@ -3,6 +3,7 @@ import { getWorkers, user } from "../../api/api";
 import "./ShowWorkers.css";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/CardV2/Card";
+import Table from "../../components/Table/Table";
 
 export default function ShowWorkers() {
   const [workers, setWorkers] = useState<user[]>([]);
@@ -15,14 +16,17 @@ export default function ShowWorkers() {
     getAllWorkers();
   });
   function mapUsers() {
-    return workers.map(({ id, name }, index) => (
-      <Card
-        color="green"
-        key={id}
-        onClick={() => navigate("/app/add-worker", { state: workers[index] })}
-        data={{ Id: id, Name: name }}
+    const data = workers.map(({ id, name }) => [id, name]);
+    return (
+      <Table
+        onPressRow={(index) =>
+          navigate("/app/add-worker", { state: workers[index] })
+        }
+        title="Workers"
+        headers={["Id", "Name"]}
+        data={data}
       />
-    ));
+    );
   }
 
   const adminButtons: Array<{ route: string; title: string }> = [
@@ -35,7 +39,11 @@ export default function ShowWorkers() {
 
   function mapAdminButtons() {
     return adminButtons.map(({ route, title }) => (
-      <button onClick={() => navigate(route)} key={route}>
+      <button
+        className="showWorkersButton"
+        onClick={() => navigate(route)}
+        key={route}
+      >
         {title}
       </button>
     ));

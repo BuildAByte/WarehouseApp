@@ -1,9 +1,11 @@
 .containerShowWorkers {
   display: flex;
+  flex: 1;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-button {
+.showWorkersButton {
   background-color: #4caf50;
   border: none;
   color: white;

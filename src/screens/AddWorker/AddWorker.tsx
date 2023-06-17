@@ -57,7 +57,7 @@ function AddWorker() {
       </div>
       <div className="item-container">
         <button
-          className="button"
+          className="addWorkerButton"
           onClick={user ? updateWorkerCallback : addWorkerCallback}
           type="button"
         >
@@ -65,7 +65,7 @@ function AddWorker() {
         </button>
         {user ? (
           <button
-            className="buttonDelete"
+            className="addWorkerButtonDelete"
             onClick={deleteWorkerCallback}
             type="button"
           >

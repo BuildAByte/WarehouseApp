@@ -6,9 +6,15 @@ interface TableProps {
   title: string;
   headers: string[];
   data: Array<Array<DataType>>;
+  onPressRow?: (row: number) => void;
 }
 
-export default function Table({ headers, data, title }: TableProps) {
+export default function Table({
+  headers,
+  data,
+  title,
+  onPressRow,
+}: TableProps) {
   function generateHeaders() {
     return headers.map((header) => {
       return <th>{header}</th>;
@@ -21,8 +27,8 @@ export default function Table({ headers, data, title }: TableProps) {
         return <td>{data}</td>;
       });
     });
-    return tableData.map((tableData) => {
-      return <tr>{tableData}</tr>;
+    return tableData.map((tableData, index) => {
+      return <tr onClick={() => onPressRow?.(index)}>{tableData}</tr>;
     });
   }
 

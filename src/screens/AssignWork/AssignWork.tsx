@@ -77,7 +77,9 @@ export default function AssignWork() {
         </select>
       </div>
       <div>
-        <button onClick={saveWork}>Save</button>
+        <button className="assignWorkButton" onClick={saveWork}>
+          Save
+        </button>
       </div>
     </div>
   );

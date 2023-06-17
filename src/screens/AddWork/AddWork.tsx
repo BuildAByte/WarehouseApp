@@ -88,28 +88,30 @@ function AddWork() {
     <div className="wrapperAddWork">
       {work ? (
         <div>
-          {mapSubtasks()}
-          <label>
-            Amount:
-            <input
-              value={subtaskAmount}
-              type="number"
-              onChange={(event) => {
-                setSubtaskAmount(parseInt(event.target.value ?? 0));
-              }}
-            />
-          </label>
+          <div>
+            {mapSubtasks()}
+            <label>
+              Amount:
+              <input
+                value={subtaskAmount}
+                type="number"
+                onChange={(event) => {
+                  setSubtaskAmount(parseInt(event.target.value ?? 0));
+                }}
+              />
+            </label>
+          </div>
           <button
             disabled={
               subtasks.length && (!subtask || !subtaskAmount) ? true : false
             }
             onClick={finishWork}
-            className="btnFinishWork"
+            className="addWorkButton"
           >
             Finish Work
           </button>
           <button
-            className="buttonDelete"
+            className="addWorkDeleteButton"
             onClick={deleteWorkCallback}
             type="button"
           >
