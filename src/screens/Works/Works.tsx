@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { getAllPickingsAdmin, getWorks, user, work } from "../../api/api";
 import "./Works.css";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/CardV2/Card";
 import Table from "../../components/Table/Table";
 
 export default function Works() {

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getWorkers, user } from "../../api/api";
 import "./ShowWorkers.css";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/CardV2/Card";
 import Table from "../../components/Table/Table";
 
 export default function ShowWorkers() {
