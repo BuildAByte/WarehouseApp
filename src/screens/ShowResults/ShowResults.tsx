@@ -5,6 +5,7 @@ import {
   downloadCsv,
   downloadSubtaskCsv,
   getTimeSpentByWorkers,
+  uploadPickingData,
 } from "../../api/api";
 import Table from "../../components/Table/Table";
 import "./ShowResults.css";
@@ -13,6 +14,7 @@ import download from "downloadjs";
 import Calendar from "react-calendar";
 
 export default function ShowResults() {
+  const [fileContent, setUploadFile] = useState<string | undefined>(undefined);
   const [workersWithTime, setWorkersWithTime] =
     useState<WorkerToWorkTypeMapped>({});
   const [startTimestamp, setStartTimestamp] = useState(
@@ -49,6 +51,19 @@ export default function ShowResults() {
   function onEndTimestampChange(date: string) {
     setEndTimestamp(new Date(date));
     getTimeSpent();
+  }
+
+  async function showFile(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target?.result;
+      setUploadFile(text?.toString());
+    };
+
+    const file = e.target?.files?.[0];
+    if (!file) return;
+    reader.readAsText(file);
   }
 
   return (
@@ -93,6 +108,16 @@ export default function ShowResults() {
             }}
           >
             Download Sub Task Report
+          </button>
+          <input type="file" onChange={showFile} name="fileUploaded" />
+          <button
+            className="resultsButton"
+            onClick={async () => {
+              if (!fileContent) alert("Please select a file before uploading!");
+              await uploadPickingData(fileContent!);
+            }}
+          >
+            Upload SoftOne Picking Data
           </button>
         </div>
       </div>

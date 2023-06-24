@@ -46,6 +46,18 @@ export interface work {
   worker_id: number;
 }
 
+function csvToJson(csv: string) {
+  const lines = csv.split("\r");
+  const result: Array<Array<string>> = [];
+  const headers = lines[0].split(";");
+  result.push([...headers]);
+  for (let i = 1; i < lines.length; i++) {
+    const currentline = lines[i].split(";");
+    result.push([...currentline]);
+  }
+  return result;
+}
+
 export async function loginWorker(
   name: string,
   password: string
@@ -74,7 +86,11 @@ export async function getWorkers(): Promise<user[]> {
   return result.json();
 }
 
-export async function addWorker(name: string, password: string) {
+export async function addWorker(
+  softOneId: number,
+  name: string,
+  password: string
+) {
   const token = localStorage.getItem("token");
   const options = {
     method: "POST",
@@ -82,7 +98,7 @@ export async function addWorker(name: string, password: string) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify({ name, password }),
+    body: JSON.stringify({ softOneId, name, password }),
   };
   const result = await fetch(`${url}/worker`, options);
   return result.json();
@@ -296,4 +312,20 @@ export async function downloadSubtaskCsv(
     options
   );
   return result.blob();
+}
+
+export async function uploadPickingData(content: string) {
+  const json = csvToJson(content);
+  const token = localStorage.getItem("token");
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    method: "POST",
+    body: JSON.stringify({ json }),
+  };
+  console.log(options);
+  const result = await fetch(`${url}/picking/upload`, options);
+  return result.json();
 }

@@ -6,11 +6,12 @@ import { useState } from "react";
 function AddWorker() {
   const user = useLocation().state as user | undefined;
   const navigation = useNavigate();
+  const [softOneId, setSoftOneId] = useState(0);
   const [name, setName] = useState(user?.name ?? "");
   const [password, setPassword] = useState("");
 
   async function addWorkerCallback() {
-    await addWorker(name, password);
+    await addWorker(softOneId, name, password);
     setName("");
     setPassword("");
     navigation("/app/workers");
@@ -30,6 +31,21 @@ function AddWorker() {
 
   return (
     <div className="mainAddWorker">
+      {!user ? (
+        <div className="item-container">
+          <label>
+            Soft One ID:
+            <input
+              value={softOneId}
+              type="text"
+              name="softOneId"
+              onChange={(event) => {
+                setSoftOneId(parseInt(event.target.value));
+              }}
+            />
+          </label>
+        </div>
+      ) : undefined}
       <div className="item-container">
         <label>
           Name:
