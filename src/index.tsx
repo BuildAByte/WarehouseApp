@@ -10,6 +10,7 @@ import Works from "./screens/Works/Works";
 import AddWork from "./screens/AddWork/AddWork";
 import AssignWork from "./screens/AssignWork/AssignWork";
 import ShowResults from "./screens/ShowResults/ShowResults";
+import SubTask from "./screens/SubTask/SubTask";
 
 function Main() {
   return (
@@ -25,6 +26,7 @@ function Main() {
           <Route path="/app/add-worker" element={<AddWorker />} />
           <Route path="/app/assignWork" element={<AssignWork />} />
           <Route path="/app/time" element={<ShowResults />} />
+          <Route path="/app/subTaskTime" element={<SubTask />} />
         </Route>
       </Routes>
     </BrowserRouter>

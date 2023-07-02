@@ -45,7 +45,7 @@ function Login() {
             }}
           />
         </label>
-        <button onClick={login} type="button">
+        <button onClick={login} type="button" className="loginBtn">
           Login
         </button>
         <div className="loginFooter">

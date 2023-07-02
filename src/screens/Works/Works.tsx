@@ -19,9 +19,12 @@ export default function Works() {
     get();
   });
   function mapLatestWork() {
-    const data = works.map(({ work_type, start_timestamp, end_timestamp }) => {
+    const data = works?.map(({ work_type, start_timestamp, end_timestamp }) => {
       const [startDate, startTime] = start_timestamp.split("T");
-      const [endDate, endTime] = end_timestamp?.split("T");
+      const [endDate, endTime] = end_timestamp?.split("T") ?? [
+        "unfinished",
+        "unfinished",
+      ];
       return [
         work_type,
         `${startDate} - ${startTime}`,

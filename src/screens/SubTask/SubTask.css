@@ -1,0 +1,12 @@
+.showSTResultsTable {
+  border-top: solid 1px #4caf50;
+  display: flex;
+  flex-direction: column;
+}
+
+.STContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 25px;
+}
