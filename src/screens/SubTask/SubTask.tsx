@@ -6,7 +6,7 @@ import {
   Milliseconds,
   getTimeSpentByWorkers,
 } from "../../api/api";
-import Table from "../../components/Table/Table";
+import STTable from "../../components/STTable/STTable";
 
 export default function SubTask() {
   const [workersWithSTTime, setWorkersWithSTTime] =
@@ -29,10 +29,12 @@ export default function SubTask() {
   function generateSTTable() {
     return Object.entries(workersWithSTTime).map(([worker, workTypes]) => {
       return (
-        <Table
+        <STTable
           title={worker}
           headers={Object.keys(workTypes)}
           data={[Object.values(workTypes)]}
+          STAmount={[Object.values(workTypes)]}
+          STType={[Object.values(workTypes)]}
         />
       );
     });

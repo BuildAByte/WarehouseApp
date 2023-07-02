@@ -78,7 +78,7 @@ export default function AssignWork() {
       </div>
       <div>
         <button className="assignWorkButton" onClick={saveWork}>
-          Save
+          Start Assignment
         </button>
       </div>
     </div>
