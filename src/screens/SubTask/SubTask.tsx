@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SubTask.css";
 import { useNavigate } from "react-router";
+import Calendar from "react-calendar";
 import {
   WorkerToWorkTypeMapped,
   Milliseconds,
@@ -52,7 +53,24 @@ export default function SubTask() {
 
   return (
     <div className="STContainer">
-      <h1>this Table will display data only for SubTask work</h1>
+      <div className="STCalendarContainer">
+        <div>
+          <label>Start Date</label>
+          <Calendar
+            onChange={(value) => onSTStartTimestampChange(value!.toString())}
+            maxDate={endSTTimeStamp}
+            value={startSTTimeStamp}
+          />
+        </div>
+        <div>
+          <label>End Date</label>
+          <Calendar
+            onChange={(value) => onSTEndTimestampChange(value!.toString())}
+            minDate={startSTTimeStamp}
+            value={endSTTimeStamp}
+          />
+        </div>
+      </div>
       <div className="showSTResultsTable">{generateSTTable()}</div>
     </div>
   );
